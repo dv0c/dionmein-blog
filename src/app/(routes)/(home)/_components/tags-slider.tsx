@@ -16,7 +16,7 @@ export const TagsSlider = ({ data }: { data: Tag | any }) => {
     >
       {data?.tags.map((item: Tag, i: any) => (
         <SwiperSlide key={i} className="pt-1 !w-[170px]">
-          <div className="transition-all delay-[100ms] hover:-translate-y-1 rounded-3xl">
+          <div className="transition-all delay-100 hover:-translate-y-1 rounded-3xl">
             <Link href={"/tag/" + item.name}>
               <Image
                 alt={item.name}

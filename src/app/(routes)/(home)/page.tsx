@@ -1,6 +1,7 @@
 import { SearchBar } from "@/components/SearchBar";
 import { Heading } from "./_components/heading";
 import { PopularTags } from "./_components/popular-tags";
+import { WhatsNew } from "./_components/whats-new";
 
 const page = ({}) => {
   return (
@@ -11,6 +12,9 @@ const page = ({}) => {
       </div>
       <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
         <PopularTags />
+      </div>
+      <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
+        <WhatsNew />
       </div>
     </div>
   );

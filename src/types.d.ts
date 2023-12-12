@@ -62,6 +62,6 @@ export type ParamsTypes = {
   filter?: any;
   limit?: number;
   page?: number;
-  order?: any;
+  order?: "published_at DESC" | "title ASC" | "name ASC" | "monthly_price ASC";
   [key: string]: any;
 };
