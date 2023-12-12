@@ -8,10 +8,15 @@ import { Tag } from "@/types";
 
 export const TagsSlider = ({ data }: { data: Tag | any }) => {
   return (
-    <Swiper slidesPerView={7} spaceBetween={15}>
+    <Swiper
+      className="w-full"
+      spaceBetween={15}
+      slidesPerGroupAuto
+      slidesPerView={"auto"}
+    >
       {data?.tags.map((item: Tag, i: any) => (
-        <SwiperSlide key={i} className="pt-1">
-          <div className="transition-all hover:-translate-y-1 hover:shadow-lg rounded-3xl">
+        <SwiperSlide key={i} className="pt-1 !w-[170px]">
+          <div className="transition-all delay-[100ms] hover:-translate-y-1 rounded-3xl">
             <Link href={"/tag/" + item.name}>
               <Image
                 alt={item.name}
