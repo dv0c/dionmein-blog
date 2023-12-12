@@ -3,7 +3,7 @@ import { api } from "@/lib/utils";
 
 export const WhatsNew = async () => {
   const { data } = await api("posts", {
-    limit: 1,
+    limit: 2,
     include: "tags,authors",
     order: "published_at DESC",
   });
