@@ -16,7 +16,7 @@ const Post: FC<PostProps> = ({ post }) => {
   return (
     <article className="w-full h-auto">
       <div className="relative hover:-translate-y-2 transition-all duration-200">
-        <Link href={"/article/" + post.title}>
+        <Link href={"/article/" + post.slug}>
           <Image
             className="object-cover rounded-2xl h-full max-h-[250px] aspect-square sm:aspect-auto sm:max-h-[679px]"
             src={post.feature_image}
@@ -39,7 +39,7 @@ const Post: FC<PostProps> = ({ post }) => {
         )}
         style={{ lineHeight: "1.2" }}
       >
-        <Link href={"/article/" + post.title}>{post.title}</Link>
+        <Link href={"/article/" + post.slug}>{post.title}</Link>
       </h1>
       <p className="text-gray-700 sm:text-2xl line-clamp-6 mt-5 max-w-[80%]">
         {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
