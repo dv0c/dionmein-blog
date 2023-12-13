@@ -10,7 +10,7 @@ export const TagsSlider = ({ data }: { data: Tag | any }) => {
   return (
     <Swiper
       className="w-full"
-      spaceBetween={15}
+      spaceBetween={11}
       slidesPerGroupAuto
       slidesPerView={"auto"}
     >

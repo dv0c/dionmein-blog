@@ -1,5 +1,5 @@
 import { FrauncesFont } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
+import { cn, formatTimeToNow } from "@/lib/utils";
 import { Post, Tag } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { FC } from "react";
 interface PostProps {
   post: Post & {
     tags: Tag[];
-    author: any;
+    authors: any;
   };
 }
 
@@ -44,6 +44,24 @@ const Post: FC<PostProps> = ({ post }) => {
       <p className="text-gray-700 sm:text-2xl line-clamp-6 mt-5 max-w-[80%]">
         {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
       </p>
+      <div className="mt-10">
+        <div className="flex items-center gap-3">
+          <Image
+            src={post.authors[0].profile_image || ""}
+            width={45}
+            height={45}
+            className="bg-gray-400 rounded-full border"
+            alt={post.authors[0].slug}
+          />
+          <div className="flex flex-col">
+            by {post.authors[0].name}
+            <span className="text-xs">
+              {formatTimeToNow(new Date(post.created_at))} ∙ {post.reading_time}{" "}
+              mins read
+            </span>
+          </div>
+        </div>
+      </div>
     </article>
   );
 };

@@ -3,7 +3,7 @@ import { TagsSlider } from "./tags-slider";
 
 export const PopularTags = () => {
   return (
-    <section className="ml-5">
+    <section className="mx-5">
       <h3 className="text-xs font-semibold">POPULAR TAGS</h3>
       <div className="mt-3">
         <Tags />
