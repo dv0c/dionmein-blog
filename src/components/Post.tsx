@@ -122,6 +122,48 @@ const Post = {
       </article>
     );
   },
+  Featured: async ({ post, description }: PostProps) => {
+    const blurImage = await getBase64(post.feature_image);
+    return (
+      <article className="w-full h-auto bg-[#f9c345] p-5 pb-10 rounded-2xl hover:-translate-y-2 transition-all duration-200">
+        <div className="relative">
+          <Link href={"/article/" + post.slug}>
+            <Image
+              className="object-cover rounded-lg h-full max-h-[200px] min-h-[200px] aspect-square sm:aspect-auto"
+              src={post.feature_image}
+              alt={post.title}
+              width={1920}
+              height={300}
+              priority
+              placeholder="blur"
+              blurDataURL={blurImage}
+            />
+          </Link>
+        </div>
+        <h1
+          className={cn(
+            "max-w-[95%] line-clamp-2 mt-5 text-[1rem] md:text-[1.5rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+            FrauncesFont.className
+          )}
+          style={{ lineHeight: "1.2" }}
+        >
+          <Link href={"/article/" + post.slug}>{post.title}</Link>
+        </h1>
+        {description && (
+          <p className="text-muted-foreground sm:text-xl line-clamp-3 mt-5 max-w-[80%]">
+            {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
+          </p>
+        )}
+        <div className="mt-3">
+          <div className="flex items-center gap-2">
+            <div className="flex flex-col">
+              <span className="text-xs">by {post.authors[0].name}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    );
+  },
 };
 
 export default Post;
