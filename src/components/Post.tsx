@@ -78,7 +78,7 @@ const Post = {
           <div className="relative hover:-translate-y-2 transition-all duration-200">
             <Link href={"/article/" + post.slug}>
               <Image
-                className="object-cover rounded-2xl h-full max-w-[100px] sm:max-w-[100%] max-h-[250px] aspect-square sm:aspect-auto sm:max-h-[300px]"
+                className="object-cover rounded-2xl h-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:max-h-[300px]"
                 src={post.feature_image}
                 alt={post.title}
                 width={1920}
@@ -95,7 +95,7 @@ const Post = {
           <div className="flex-col">
             <h1
               className={cn(
-                "max-w-[95%] flex-1 line-clamp-2 mt-5 text-[1.3rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+                "max-w-[95%] flex-1 line-clamp-2  text-[1.3rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
                 FrauncesFont.className
               )}
               style={{ lineHeight: "1.2" }}
@@ -128,43 +128,58 @@ const Post = {
   },
   Featured: async ({ post, description }: PostProps) => {
     const blurImage = await getBase64(post.feature_image);
+
     return (
-      <article className="w-full h-auto bg-[#f9c345] p-5 pb-10 rounded-2xl hover:-translate-y-2 transition-all duration-200">
-        <div className="relative">
-          <Link href={"/article/" + post.slug}>
-            <Image
-              className="object-cover rounded-lg h-full max-h-[200px] min-h-[200px] aspect-square sm:aspect-auto"
-              src={post.feature_image}
-              alt={post.title}
-              width={1920}
-              height={300}
-              priority
-              placeholder="blur"
-              blurDataURL={blurImage}
-            />
-          </Link>
-        </div>
-        <h1
-          className={cn(
-            "max-w-[95%] line-clamp-2 mt-5 text-[1rem] md:text-[1.5rem] font-bold hover:underline underline-offset-[3px] decoration-2",
-            FrauncesFont.className
-          )}
-          style={{ lineHeight: "1.2" }}
-        >
-          <Link href={"/article/" + post.slug}>{post.title}</Link>
-        </h1>
-        {description && (
-          <p className="text-muted-foreground sm:text-xl line-clamp-3 mt-5 max-w-[80%]">
-            {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
-          </p>
-        )}
-        <div className="mt-3">
-          <div className="flex items-center gap-2">
-            <div className="flex flex-col">
-              <span className="text-xs">by {post.authors[0].name}</span>
+      <article className="w-full h-auto">
+        <FlexWrapper>
+          <div className="relative hover:-translate-y-2 transition-all duration-200">
+            <Link href={"/article/" + post.slug}>
+              <Image
+                className="object-cover rounded-2xl h-full min-h-[53px] max-h-[53px] max-w-[73px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:max-h-[300px]"
+                src={post.feature_image}
+                alt={post.title}
+                width={1920}
+                height={300}
+                priority
+                placeholder="blur"
+                blurDataURL={blurImage}
+              />
+            </Link>
+          </div>
+          <div className="sm:block hidden">
+            <Tags tags={post.tags} />
+          </div>
+          <div className="flex-col">
+            <h1
+              className={cn(
+                "max-w-[95%] flex-1 line-clamp-3 sm:line-clamp-2 text-[1.1rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+                FrauncesFont.className
+              )}
+              style={{ lineHeight: "1.2" }}
+            >
+              <Link href={"/article/" + post.slug}>{post.title}</Link>
+            </h1>
+            {description && (
+              <p className="text-muted-foreground sm:text-xl line-clamp-3 mt-5 max-w-[80%]">
+                {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
+              </p>
+            )}
+            <div className="mt-3 hidden sm:block">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Image
+                  src={post.authors[0].profile_image || ""}
+                  width={25}
+                  height={25}
+                  className="bg-gray-400 hidden sm:block object-cover min-w-[25px] min-h-[25px] rounded-full border"
+                  alt={post.authors[0].slug}
+                />
+                <div className="flex flex-col">
+                  <span className="text-xs">by {post.authors[0].name}</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </FlexWrapper>
       </article>
     );
   },
@@ -188,5 +203,5 @@ const Tags = ({ tags }: { tags: Tag[] }) => {
 };
 
 const FlexWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-center gap-3  sm:block">{children}</div>
+  <div className="flex sm:items-center gap-3 sm:block">{children}</div>
 );

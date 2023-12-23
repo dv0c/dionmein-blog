@@ -12,7 +12,7 @@ export const FeaturedPosts = async () => {
   return (
     <section className="mx-5 mb-[7vh]">
       <h1 className="text-xs font-semibold">FEATURED POSTS</h1>
-      <div className="m-auto mt-5 relative z-[1] rounded-xl overflow-hidden pt-[6vh] pb-[7vw] px-[8vh] bg-[#f8f6f8] ">
+      <div className="m-auto mt-5 relative z-[1] rounded-xl overflow-hidden pt-[6vh] pb-[7vw] px-[4vh] sm:px-[8vh] bg-[#f8f6f8] ">
         <img
           alt="bg-img"
           src={
@@ -33,7 +33,7 @@ export const FeaturedPosts = async () => {
               Get started with our best stories
             </h1>
           </div>
-          <div className="flex gap-10 md:flex-nowrap flex-wrap">
+          <div className="flex gap-5 sm:gap-10 md:flex-nowrap flex-wrap bg-[#f9c345] sm:bg-inherit rounded-2xl p-5 sm:p-0">
             <Post.Featured post={data.posts[0]} />
             <Post.Featured post={data.posts[1]} />
             <Post.Featured post={data.posts[2]} />
