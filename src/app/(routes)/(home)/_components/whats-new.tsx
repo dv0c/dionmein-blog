@@ -30,7 +30,7 @@ export const WhatsNew = async () => {
               Subscribe
             </Button>
           </div>
-          <Post.Default description={false} post={data.posts[0]} />
+          <Post.Default description={false} post={data.posts[1]} />
           <Post.Default description={false} post={data.posts[2]} />
         </div>
       </div>

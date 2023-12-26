@@ -78,7 +78,7 @@ const Post = {
           <div className="relative hover:-translate-y-2 transition-all duration-200">
             <Link href={"/article/" + post.slug}>
               <Image
-                className="object-cover rounded-2xl h-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:max-h-[300px]"
+                className="object-cover rounded-2xl h-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[300px] sm:max-h-[300px]"
                 src={post.feature_image}
                 alt={post.title}
                 width={1920}
@@ -92,10 +92,10 @@ const Post = {
           <div className="sm:block hidden">
             <Tags tags={post.tags} />
           </div>
-          <div className="flex-col">
+          <div className="flex-col mt-2">
             <h1
               className={cn(
-                "max-w-[95%] flex-1 line-clamp-2  text-[1.3rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+                "max-w-[95%] flex-1 line-clamp-2 text-[1.3rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
                 FrauncesFont.className
               )}
               style={{ lineHeight: "1.2" }}
@@ -130,12 +130,12 @@ const Post = {
     const blurImage = await getBase64(post.feature_image);
 
     return (
-      <article className="w-full h-auto">
+      <article className="w-full hover:-translate-y-2 transition-all duration-200 h-auto sm:bg-[#f9c345] sm:p-5 rounded-2xl">
         <FlexWrapper>
-          <div className="relative hover:-translate-y-2 transition-all duration-200">
+          <div className="relative">
             <Link href={"/article/" + post.slug}>
               <Image
-                className="object-cover rounded-2xl h-full min-h-[53px] max-h-[53px] max-w-[73px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:max-h-[300px]"
+                className="object-cover rounded-xl h-full sm:min-w-[100%] min-h-[53px] max-h-[53px] max-w-[73px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[250px] sm:max-h-[250px]"
                 src={post.feature_image}
                 alt={post.title}
                 width={1920}
@@ -149,10 +149,10 @@ const Post = {
           <div className="sm:block hidden">
             <Tags tags={post.tags} />
           </div>
-          <div className="flex-col">
+          <div className="flex-col mt-2">
             <h1
               className={cn(
-                "max-w-[95%] flex-1 line-clamp-3 sm:line-clamp-2 text-[1.1rem] md:text-[2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+                "max-w-[95%] flex-1 line-clamp-3 sm:line-clamp-2 text-[1.1rem] md:text-[1.5rem] font-bold",
                 FrauncesFont.className
               )}
               style={{ lineHeight: "1.2" }}
@@ -165,14 +165,7 @@ const Post = {
               </p>
             )}
             <div className="mt-3 hidden sm:block">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Image
-                  src={post.authors[0].profile_image || ""}
-                  width={25}
-                  height={25}
-                  className="bg-gray-400 hidden sm:block object-cover min-w-[25px] min-h-[25px] rounded-full border"
-                  alt={post.authors[0].slug}
-                />
+              <div className="flex items-center gap-2">
                 <div className="flex flex-col">
                   <span className="text-xs">by {post.authors[0].name}</span>
                 </div>
@@ -189,13 +182,15 @@ export default Post;
 
 const Tags = ({ tags }: { tags: Tag[] }) => {
   return (
-    <div className="flex items-center gap-x-2 mt-5">
+    <div className="flex items-center gap-2 mt-5 flex-wrap">
       {tags.map((item, i) => (
         <button
           className="bg-gray-100 transition-all hover:bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold"
           key={i}
         >
-          <Link href={"/tag/" + item.name}>{item.name}</Link>
+          <Link href={"/tag/" + item.name}>
+            <span className="truncate">{item.name}</span>
+          </Link>
         </button>
       ))}
     </div>

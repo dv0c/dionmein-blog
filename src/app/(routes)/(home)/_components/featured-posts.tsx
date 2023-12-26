@@ -1,6 +1,7 @@
 import Post from "@/components/Post";
 import { FrauncesFont } from "@/lib/fonts";
 import { api, cn } from "@/lib/utils";
+import Link from "next/link";
 
 export const FeaturedPosts = async () => {
   const { data } = await api("posts", {
@@ -12,7 +13,7 @@ export const FeaturedPosts = async () => {
   return (
     <section className="mx-5 mb-[7vh]">
       <h1 className="text-xs font-semibold">FEATURED POSTS</h1>
-      <div className="m-auto mt-5 relative z-[1] rounded-xl overflow-hidden pt-[6vh] pb-[7vw] px-[4vh] sm:px-[8vh] bg-[#f8f6f8] ">
+      <div className="m-auto mt-5 relative z-[1] rounded-xl overflow-hidden pt-[6vh] pb-[5vw] px-[4vh] sm:px-[8vh] bg-[#f8f6f8] ">
         <img
           alt="bg-img"
           src={
@@ -37,6 +38,14 @@ export const FeaturedPosts = async () => {
             <Post.Featured post={data.posts[0]} />
             <Post.Featured post={data.posts[1]} />
             <Post.Featured post={data.posts[2]} />
+          </div>
+          <div className="flex justify-end w-full">
+            <Link
+              href={"/featured-posts"}
+              className="text-sm text-muted-foreground hover:underline"
+            >
+              See all featured posts →
+            </Link>
           </div>
         </div>
       </div>
