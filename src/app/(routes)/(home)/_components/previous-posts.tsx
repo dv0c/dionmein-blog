@@ -12,7 +12,7 @@ const PreviousPosts = async ({}) => {
   return (
     <section className="mx-5 mb-[7vh]">
       <h1 className="text-xs font-semibold">PREVIOUS POSTS</h1>
-      <div className="mt-3">
+      <div className="mt-5">
         <PostWrapper>
           {data.posts.map((i: _Post, key: number) => (
             <Post.Default post={i as any} key={key} description />
