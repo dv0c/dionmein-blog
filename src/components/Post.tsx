@@ -103,11 +103,11 @@ const Post = {
               <Link href={"/article/" + post.slug}>{post.title}</Link>
             </h1>
             {description && (
-              <p className="text-muted-foreground sm:text-xl line-clamp-3 mt-5 max-w-[80%]">
+              <p className="text-muted-foreground hidden sm:block sm:text-md mt-5 max-w-[80%]">
                 {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
               </p>
             )}
-            <div className="mt-3">
+            <div className="mt-5">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Image
                   src={post.authors[0].profile_image || ""}
