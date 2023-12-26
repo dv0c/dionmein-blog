@@ -12,7 +12,7 @@ export const WhatsNew = async () => {
 
   return (
     <section className="mx-5">
-      <h1 className="text-xs font-semibold">WHAT&apos;S NEW?</h1>
+      <h1 className="text-xs font-semibold">WHAT'S NEW?</h1>
       <div className="flex m-auto gap-10 mt-5 flex-wrap sm:flex-nowrap">
         <Post.Big post={data.posts[0]} />
         <hr className="block sm:hidden text-muted-foreground w-full" />
