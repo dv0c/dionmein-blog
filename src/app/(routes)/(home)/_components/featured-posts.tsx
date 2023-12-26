@@ -24,7 +24,7 @@ export const FeaturedPosts = async () => {
         />
         <div className="w-full justify-center flex flex-col gap-10">
           <div>
-            <h3 className="text-center font-[500]">Editor's Choice</h3>
+            <h3 className="text-center font-[500]">Editor&apos;s Choice</h3>
             <h1
               className={cn(
                 "text-2xl md:text-5xl font-bold text-center m-auto max-w-lg mt-5",
