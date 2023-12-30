@@ -1,6 +1,7 @@
 import Post from "@/components/Post";
+import { api } from "@/lib/api";
 import { FrauncesFont } from "@/lib/fonts";
-import { api, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export const FeaturedPosts = async () => {

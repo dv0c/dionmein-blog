@@ -20,6 +20,20 @@ export interface Tag {
   url: string;
 }
 
+export interface PostsWithMeta {
+  posts: [Post];
+  meta: {
+    pagination: {
+      page: number;
+      limit: number;
+      pages: number;
+      total: number;
+      next: number;
+      prev: number;
+    };
+  };
+}
+
 export interface Post {
   slug: string;
   id: string;

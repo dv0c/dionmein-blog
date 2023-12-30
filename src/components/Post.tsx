@@ -1,5 +1,5 @@
 import { FrauncesFont } from "@/lib/fonts";
-import getBase64, { cn, formatTimeToNow } from "@/lib/utils";
+import { cn, formatTimeToNow } from "@/lib/utils";
 import { Post, Tag } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,9 +13,7 @@ interface PostProps {
 }
 
 const Post = {
-  Big: async ({ post }: PostProps) => {
-    const blurImage = await getBase64(post.feature_image);
-
+  Big: ({ post }: PostProps) => {
     return (
       <article className="w-full h-auto">
         <div className="relative hover:-translate-y-2 transition-all duration-200">
@@ -27,8 +25,6 @@ const Post = {
               width={1920}
               height={679}
               priority
-              placeholder="blur"
-              blurDataURL={blurImage}
             />
           </Link>
         </div>
@@ -53,7 +49,7 @@ const Post = {
               src={post.authors[0].profile_image || ""}
               width={45}
               height={45}
-              className="bg-gray-400 object-cover min-w-[45px] min-h-[45px] rounded-full border"
+              className="bg-gray-400 object-cover min-w-[45px] max-w-[45px] max-h-[45px] min-h-[45px] rounded-full border"
               alt={post.authors[0].slug}
             />
             <div className="flex flex-col">
@@ -70,8 +66,7 @@ const Post = {
       </article>
     );
   },
-  Default: async ({ post, description }: PostProps) => {
-    const blurImage = await getBase64(post.feature_image);
+  Default: ({ post, description }: PostProps) => {
     return (
       <article className="w-full h-auto">
         <FlexWrapper>
@@ -84,8 +79,6 @@ const Post = {
                 width={1920}
                 height={300}
                 priority
-                placeholder="blur"
-                blurDataURL={blurImage}
               />
             </Link>
           </div>
@@ -113,7 +106,7 @@ const Post = {
                   src={post.authors[0].profile_image || ""}
                   width={25}
                   height={25}
-                  className="bg-gray-400 hidden sm:block object-cover min-w-[25px] min-h-[25px] rounded-full border"
+                  className="bg-gray-400 hidden sm:block object-cover min-w-[25px] min-h-[25px] max-w-[25px] max-h-[25px] rounded-full border"
                   alt={post.authors[0].slug}
                 />
                 <div className="flex flex-col">
@@ -126,9 +119,7 @@ const Post = {
       </article>
     );
   },
-  Featured: async ({ post, description }: PostProps) => {
-    const blurImage = await getBase64(post.feature_image);
-
+  Featured: ({ post, description }: PostProps) => {
     return (
       <article className="w-full hover:-translate-y-2 transition-all duration-200 h-auto sm:bg-[#f9c345] sm:p-5 rounded-2xl">
         <FlexWrapper>
@@ -141,8 +132,6 @@ const Post = {
                 width={1920}
                 height={300}
                 priority
-                placeholder="blur"
-                blurDataURL={blurImage}
               />
             </Link>
           </div>

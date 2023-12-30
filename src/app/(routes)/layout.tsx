@@ -1,5 +1,4 @@
 import { Header } from "@/components/Header";
-import Image from "next/image";
 
 const RouteLayout = ({ children }: { children: React.ReactNode }) => {
   return (

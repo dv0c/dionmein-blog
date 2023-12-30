@@ -1,4 +1,4 @@
-import { api } from "@/lib/utils";
+import { api } from "@/lib/api";
 import { TagsSlider } from "./tags-slider";
 
 export const PopularTags = () => {

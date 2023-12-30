@@ -1,7 +1,7 @@
 import Post from "@/components/Post";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { api } from "@/lib/utils";
+import { api } from "@/lib/api";
 
 export const WhatsNew = async () => {
   const { data } = await api("posts", {
