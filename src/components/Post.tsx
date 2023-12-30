@@ -1,3 +1,4 @@
+import { dynamicBlurDataUrl } from "@/hooks/use-base64";
 import { FrauncesFont } from "@/lib/fonts";
 import { cn, formatTimeToNow } from "@/lib/utils";
 import { Post, Tag } from "@/types";
@@ -72,14 +73,16 @@ const Post = {
         <FlexWrapper>
           <div className="relative hover:-translate-y-2 transition-all duration-200">
             <Link href={"/article/" + post.slug}>
-              <Image
-                className="object-cover rounded-2xl h-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[300px] sm:max-h-[300px]"
-                src={post.feature_image}
-                alt={post.title}
-                width={1920}
-                height={300}
-                priority
-              />
+              <div>
+                <Image
+                  className="object-cover bg-[#f8f6f8] rounded-2xl h-full w-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[300px] sm:max-h-[300px]"
+                  src={post.feature_image}
+                  alt={post.title}
+                  width={1920}
+                  height={300}
+                  priority
+                />
+              </div>
             </Link>
           </div>
           <div className="sm:block hidden">

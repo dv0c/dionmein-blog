@@ -10,6 +10,7 @@ import { Loader2 } from "lucide-react";
 export const PostContainer = () => {
   const [data, setData] = useState<_Post[]>();
   const [meta, setMeta] = useState<any>();
+  const [isButtonLoading, setButtonLoading] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -20,35 +21,25 @@ export const PostContainer = () => {
       order: "published_at DESC",
     }).then(({ data }) => {
       setData([...data.posts]);
+      setMeta(data.meta);
       setLoading(false);
     });
   }, []);
 
   const loadMore = async () => {
-    try {
-      const response = await api("posts", {
-        page: meta?.pagination?.next,
-        limit: 1,
-        include: "tags,authors",
-        order: "published_at DESC",
-      });
-
-      const { posts: newPosts, meta: newMeta } = response.data;
-
-      // Filter out duplicates based on a unique identifier (e.g., post ID)
-      const uniquePosts = newPosts.filter((newPost) => {
-        return !data.some((existingPost) => existingPost.id === newPost.id);
-      });
-
-      // Update the state with the new posts data, appending to the existing posts
-      setData((prevData) => [...prevData, ...uniquePosts]);
-      setMeta(newMeta);
-
-      // Refresh the router to reflect the new posts in the URL
+    setButtonLoading(true);
+    await api("posts", {
+      page: meta?.pagination?.next,
+      limit: 10,
+      include: "tags,authors",
+      order: "published_at DESC",
+    }).then(({ data: res }) => {
+      setData([...data!, ...res.posts]);
+      setMeta(res.meta);
       router.refresh();
-    } catch (error) {
-      console.error("Error fetching more posts:", error);
-    }
+      setButtonLoading(false);
+      console.log(meta);
+    });
   };
 
   return (
@@ -66,14 +57,21 @@ export const PostContainer = () => {
           </div>
         )}
       </PostWrapper>
-      <div className="flex items-center justify-center">
-        <Button
-          onClick={loadMore}
-          className="rounded-full pt-[2em] border-none h-10 pb-[2em] w-[150px] bg-[#f9c345] text-black hover:bg-[#fcd780fd]"
-        >
-          Load more
-        </Button>
-      </div>
+      {meta?.pagination?.page !== meta?.pagination?.pages && (
+        <div className="flex items-center justify-center mt-10">
+          <Button
+            disabled={isButtonLoading}
+            onClick={loadMore}
+            className="rounded-full pt-[2em] border-none h-10 pb-[2em] w-[150px] bg-[#f9c345] text-black hover:bg-[#fcd780fd]"
+          >
+            {!isButtonLoading ? (
+              "Load more"
+            ) : (
+              <Loader2 className="animate-spin" size={18} />
+            )}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
