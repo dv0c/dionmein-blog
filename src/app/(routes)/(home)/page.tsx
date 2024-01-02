@@ -4,6 +4,7 @@ import { PopularTags } from "./_components/popular-tags";
 import { WhatsNew } from "./_components/whats-new";
 import { FeaturedPosts } from "./_components/featured-posts";
 import PreviousPosts from "./_components/previous-posts";
+import AlsoLike from "./_components/also-like";
 
 const page = ({}) => {
   return (
@@ -23,6 +24,9 @@ const page = ({}) => {
       </div>
       <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
         <PreviousPosts />
+      </div>
+      <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
+        <AlsoLike />
       </div>
     </div>
   );

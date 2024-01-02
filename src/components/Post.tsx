@@ -75,7 +75,7 @@ const Post = {
             <Link href={"/article/" + post.slug}>
               <div>
                 <Image
-                  className="object-cover bg-[#f8f6f8] rounded-2xl h-full w-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[300px] sm:max-h-[300px]"
+                  className="object-cover bg-[#f8f6f8] rounded-2xl min-w-[120px] h-full w-full max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[300px] sm:max-h-[300px]"
                   src={post.feature_image}
                   alt={post.title}
                   width={1920}
@@ -112,6 +112,51 @@ const Post = {
                   className="bg-gray-400 hidden sm:block object-cover min-w-[25px] min-h-[25px] max-w-[25px] max-h-[25px] rounded-full border"
                   alt={post.authors[0].slug}
                 />
+                <div className="flex flex-col">
+                  <span className="text-xs">by {post.authors[0].name}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FlexWrapper>
+      </article>
+    );
+  },
+  Small: ({ post, description }: PostProps) => {
+    return (
+      <article className="w-full h-auto">
+        <FlexWrapper>
+          <div className="relative hover:-translate-y-2 transition-all duration-200">
+            <Link href={"/article/" + post.slug}>
+              <div>
+                <Image
+                  className="object-cover bg-[#f8f6f8]  rounded-2xl h-full w-full min-w-[120px] max-h-[100%] max-w-[120px] aspect-video sm:max-w-[270px] sm:aspect-auto sm:min-h-[200px] sm:max-h-[200px]"
+                  src={post.feature_image}
+                  alt={post.title}
+                  width={200}
+                  height={300}
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
+          <div className="flex-col mt-5">
+            <h1
+              className={cn(
+                "max-w-[95%] flex-1 line-clamp-2 text-[1.3rem] md:text-[1.2rem] font-bold hover:underline underline-offset-[3px] decoration-2",
+                FrauncesFont.className
+              )}
+              style={{ lineHeight: "1.2" }}
+            >
+              <Link href={"/article/" + post.slug}>{post.title}</Link>
+            </h1>
+            {description && (
+              <p className="text-muted-foreground hidden sm:block sm:text-md mt-5 max-w-[80%]">
+                {post.custom_excerpt ? post.custom_excerpt : post.excerpt}
+              </p>
+            )}
+            <div className="mt-5">
+              <div className="flex items-center gap-2 text-muted-foreground">
                 <div className="flex flex-col">
                   <span className="text-xs">by {post.authors[0].name}</span>
                 </div>
