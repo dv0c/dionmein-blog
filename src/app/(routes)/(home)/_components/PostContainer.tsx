@@ -16,7 +16,7 @@ export const PostContainer = () => {
 
   useEffect(() => {
     api("posts", {
-      limit: 10,
+      limit: 6,
       include: "tags,authors",
       order: "published_at DESC",
     }).then(({ data }) => {
@@ -30,7 +30,7 @@ export const PostContainer = () => {
     setButtonLoading(true);
     await api("posts", {
       page: meta?.pagination?.next,
-      limit: 10,
+      limit: 6,
       include: "tags,authors",
       order: "published_at DESC",
     }).then(({ data: res }) => {

@@ -130,7 +130,7 @@ const Post = {
             <Link href={"/article/" + post.slug}>
               <div>
                 <Image
-                  className="object-cover bg-[#f8f6f8]  rounded-2xl h-full w-full min-w-[120px] max-h-[100%] max-w-[120px] aspect-video sm:max-w-[270px] sm:aspect-auto sm:min-h-[200px] sm:max-h-[200px]"
+                  className="object-cover bg-[#f8f6f8] rounded-2xl h-full w-full min-w-[120px] max-h-[100%] max-w-[120px] aspect-video sm:max-w-[100%] sm:aspect-auto sm:min-h-[200px] sm:max-h-[200px]"
                   src={post.feature_image}
                   alt={post.title}
                   width={200}

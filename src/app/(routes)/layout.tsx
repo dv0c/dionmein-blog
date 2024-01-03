@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 
 const RouteLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,6 +7,7 @@ const RouteLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="cover-mask" />
       <Header />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };
