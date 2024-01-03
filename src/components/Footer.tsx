@@ -112,7 +112,7 @@ const Footer = () => {
     },
   ];
   return (
-    <div className="mt-20 mx-auto max-w-[var(--max-width-2)] py-10 p-5 md:p-0 border-t">
+    <div className="mt-20 mx-auto max-w-[var(--max-width-2)] py-10 p-5 md:p-0 md:py-10 border-t">
       <div className="flex flex-wrap gap-10">
         <List list={list} />
       </div>
