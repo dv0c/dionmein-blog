@@ -8,7 +8,9 @@ export const Header = () => {
         <Link href={"/"}>
           <Image src={"/reiro.svg"} alt="logo" width={85} height={34} />
         </Link>
-        <div className="font-semibold">Home</div>
+        <Link href={"/"} className="font-semibold">
+          Home
+        </Link>
       </div>
     </header>
   );
