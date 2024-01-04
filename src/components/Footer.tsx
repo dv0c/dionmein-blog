@@ -40,7 +40,7 @@ const List = ({ list }: any) => {
                   href={item.href}
                 >
                   {item.icon}
-                  <span className="group-hover:underline underline-offset-4">
+                  <span className="group-hover:underline underline-offset-4 text-sm">
                     {item.name}
                   </span>
                 </Link>
