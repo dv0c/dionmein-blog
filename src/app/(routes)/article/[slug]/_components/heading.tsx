@@ -1,3 +1,7 @@
+import Tags from "@/components/Tags";
+import { FrauncesFont } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { Tag } from "@/types";
 import { FC } from "react";
 
 interface headingProps {
@@ -8,10 +12,22 @@ interface headingProps {
 
 const Heading: FC<headingProps> = ({ description, tags, title }) => {
   return (
-    <div>
-      {title}
-      {description}
-      {JSON.stringify(tags)}
+    <div className="space-y-10">
+      <div className="max-w-[860px] space-y-8">
+        <h1
+          className={cn(
+            "text-[4rem] leading-[1.2] font-[680]",
+            FrauncesFont.className
+          )}
+        >
+          {title}
+        </h1>
+        <p className="text-muted-foreground text-[1.4rem]">{description}</p>
+        <div>
+          <Tags tags={tags} className="py-2 px-4" />
+        </div>
+      </div>
+      <hr />
     </div>
   );
 };

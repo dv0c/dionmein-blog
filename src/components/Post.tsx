@@ -4,6 +4,7 @@ import { cn, formatTimeToNow } from "@/lib/utils";
 import { Post, Tag } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import Tags from "./Tags";
 
 interface PostProps {
   description?: boolean;
@@ -216,23 +217,6 @@ const Post = {
 };
 
 export default Post;
-
-const Tags = ({ tags }: { tags: Tag[] }) => {
-  return (
-    <div className="flex items-center gap-2 mt-5 flex-wrap">
-      {tags.map((item, i) => (
-        <button
-          className="bg-gray-100 transition-all hover:bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold"
-          key={i}
-        >
-          <Link href={"/tag/" + item.name}>
-            <span className="truncate">{item.name}</span>
-          </Link>
-        </button>
-      ))}
-    </div>
-  );
-};
 
 const FlexWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="flex sm:items-center gap-3 sm:block">{children}</div>
