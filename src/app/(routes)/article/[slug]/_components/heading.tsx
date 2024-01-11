@@ -16,13 +16,15 @@ const Heading: FC<headingProps> = ({ description, tags, title }) => {
       <div className="max-w-[860px] space-y-8">
         <h1
           className={cn(
-            "text-[4rem] leading-[1.2] font-[680]",
+            "text-[2.5rem] md:text-[4rem] leading-[1.2] font-[680]",
             FrauncesFont.className
           )}
         >
           {title}
         </h1>
-        <p className="text-muted-foreground text-[1.4rem]">{description}</p>
+        <p className="text-muted-foreground text-[1rem] md:text-[1.4rem]">
+          {description}
+        </p>
         <div>
           <Tags tags={tags} className="py-2 px-4" />
         </div>

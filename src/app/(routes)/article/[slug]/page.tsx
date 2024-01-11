@@ -6,6 +6,8 @@ import Creator from "./_components/Creator";
 import Share from "./_components/Share";
 import { notFound } from "next/navigation";
 import { env } from "process";
+import Thumbnail from "./_components/Thumbnail";
+import Content from "./_components/Content";
 
 interface pageProps {
   params: {
@@ -29,14 +31,14 @@ const page: FC<pageProps> = async ({ params }) => {
   console.log(body.tags);
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 px-10 lg:px-0">
       <div className="max-w-5xl mx-auto overflow-hidden">
         <Heading
           title={body.title}
           description={body.excerpt}
           tags={body.tags}
         />
-        <div className="my-5 flex justify-between flex-wrap items-center">
+        <div className="my-5 flex gap-3 flex-wrap justify-between items-center">
           <Creator
             author={body.primary_author}
             date={{ createdAt: body.created_at, read: body.reading_time }}
@@ -45,6 +47,21 @@ const page: FC<pageProps> = async ({ params }) => {
             url={env.NEXT_PUBLIC_DOMAIN + "/article/" + body.slug}
             post={body}
           />
+        </div>
+      </div>
+      <div className="max-w-6xl mx-auto overflow-hidden mt-5">
+        <Thumbnail
+          credits={body.feature_image_caption}
+          alt={body.feature_image_alt as string}
+          image={body.feature_image}
+        />
+      </div>
+      <div className="max-w-5xl mx-auto mt-10 overflow-hidden">
+        <div className="flex justify-between">
+          <div>
+            <Content body={body.html} />
+          </div>
+          <div>2</div>
         </div>
       </div>
     </div>
