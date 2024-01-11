@@ -23,6 +23,7 @@
     "date-fns": "^2.30.0",
     "lucide-react": "^0.302.0",
     "next": "14.0.3",
+    "next-share": "^0.27.0",
     "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",

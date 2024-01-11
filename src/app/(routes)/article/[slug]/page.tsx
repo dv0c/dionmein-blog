@@ -3,6 +3,9 @@ import Heading from "./_components/heading";
 import { api } from "@/lib/api";
 import { Post, PrimaryAuthor, Tag } from "@/types";
 import Creator from "./_components/Creator";
+import Share from "./_components/Share";
+import { notFound } from "next/navigation";
+import { env } from "process";
 
 interface pageProps {
   params: {
@@ -16,10 +19,14 @@ const page: FC<pageProps> = async ({ params }) => {
     include: "tags,authors",
   });
   const body = data.posts[0] as Post & {
-    tags: Tag;
+    tags: Tag[];
     primary_author: PrimaryAuthor;
   };
-  console.log(body.primary_author);
+
+  if (body.primary_author === undefined || body.id === undefined)
+    return notFound();
+
+  console.log(body.tags);
 
   return (
     <div className="mt-10">
@@ -29,7 +36,13 @@ const page: FC<pageProps> = async ({ params }) => {
           description={body.excerpt}
           tags={body.tags}
         />
-        <Creator author={body.primary_author} />
+        <div className="my-5 flex justify-between flex-wrap items-center">
+          <Creator
+            author={body.primary_author}
+            date={{ createdAt: body.created_at, read: body.reading_time }}
+          />
+          <Share url={env.NEXT_PUBLIC_DOMAIN + body.slug} tags={body.tags} />
+        </div>
       </div>
     </div>
   );
