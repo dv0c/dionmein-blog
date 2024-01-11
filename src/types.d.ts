@@ -79,3 +79,20 @@ export type ParamsTypes = {
   order?: "published_at DESC" | "title ASC" | "name ASC" | "monthly_price ASC";
   [key: string]: any;
 };
+
+
+export type PrimaryAuthor = {
+  id: number;
+  name: string;
+  slug:string;
+  profile_image: string;
+  cover_image:string;
+  bio: string | null;
+  website: string | null;
+  location: string | null;
+  facebook: string | null;
+  twitter: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  url: string;
+}
