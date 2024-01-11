@@ -41,7 +41,10 @@ const page: FC<pageProps> = async ({ params }) => {
             author={body.primary_author}
             date={{ createdAt: body.created_at, read: body.reading_time }}
           />
-          <Share url={env.NEXT_PUBLIC_DOMAIN + body.slug} tags={body.tags} />
+          <Share
+            url={env.NEXT_PUBLIC_DOMAIN + "/article/" + body.slug}
+            post={body}
+          />
         </div>
       </div>
     </div>

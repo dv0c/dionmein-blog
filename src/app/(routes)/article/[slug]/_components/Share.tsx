@@ -1,25 +1,38 @@
-import { Twitter } from "lucide-react";
+"use client";
 import { FC } from "react";
-import { FacebookShareButton, FacebookIcon } from "next-share";
-import { Tag } from "@/types";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "next-share";
+import { Post, Tag } from "@/types";
 
 interface ShareProps {
+  post: Post & {
+    tags: Tag[];
+  };
   url: string;
-  tags: Tag[];
 }
 
-const Share: FC<ShareProps> = ({ url, tags }) => {
+const Share: FC<ShareProps> = ({ post, url }) => {
   return (
-    <div>
+    <div className="space-x-2">
       <FacebookShareButton
         url={url}
-        quote={"next-share is a social share buttons for your next React apps."}
-        hashtag={tags.map((i) => i.name).toString()}
+        quote={post.excerpt}
+        title={post.title}
+        hashtag={post.tags.map((i) => i.name).toString()}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
-
-      <Twitter />
+      <TwitterShareButton
+        url={url}
+        title={post.title}
+        hashtags={post.tags.map((i) => i.name)}
+      >
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
     </div>
   );
 };
