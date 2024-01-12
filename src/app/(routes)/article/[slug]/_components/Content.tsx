@@ -8,9 +8,9 @@ interface ContentProps {
 
 const Content: FC<ContentProps> = ({ body }) => {
   return (
-    <div className="post-container ">
-      <div
-        className={"post-content"}
+    <div className="post-container max-w-2xl">
+      <section
+        className="gh-content gh-canvas is-body"
         dangerouslySetInnerHTML={{ __html: body }}
       />
     </div>
