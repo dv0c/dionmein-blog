@@ -7,6 +7,7 @@ import Link from "next/link";
 export const FeaturedPosts = async () => {
   const { data } = await api("posts", {
     limit: 3,
+    filter: "featured:true",
     include: "tags,authors",
     order: "published_at DESC",
   });

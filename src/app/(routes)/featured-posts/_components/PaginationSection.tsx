@@ -1,7 +1,5 @@
-"use client";
-import { FC, useEffect, useState } from "react";
 import {
-  Pagination as Pagi,
+  Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
@@ -9,30 +7,22 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { PostsWithMeta } from "@/types";
-import { useRouter, useSearchParams } from "next/navigation";
-interface PaginationProps {
-  data: PostsWithMeta;
-}
 
-const Pagination = ({
-  data,
+function PaginationSection({
   totalPosts,
   postsPerPage,
+  currentPage,
+  setCurrentPage,
 }: {
   totalPosts: any;
   postsPerPage: any;
-  data: PostsWithMeta;
-}) => {
-  const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(0);
+  currentPage: any;
+  setCurrentPage: any;
+}) {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  useEffect(() => {
-    router.push("/featured-posts?pagination=" + currentPage);
-  }, [currentPage]);
 
   const maxPageNum = 5; // Maximum page numbers to display at once
   const pageNumLimit = Math.floor(maxPageNum / 2); // Current page should be in the middle if possible
@@ -59,7 +49,9 @@ const Pagination = ({
     const renderedPages = activePages.map((page, idx) => (
       <PaginationItem
         key={idx}
-        className={currentPage === page ? "bg-neutral-100 rounded-md" : ""}
+        className={
+          currentPage === page ? "bg-neutral-100 rounded-md" : "cursor-pointer"
+        }
       >
         <PaginationLink onClick={() => setCurrentPage(page)}>
           {page}
@@ -92,22 +84,39 @@ const Pagination = ({
     return renderedPages;
   };
 
-  return (
+  return currentPage > 1 ? (
     <div>
-      <Pagi>
+      <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious onClick={handlePrevPage} />
+            <PaginationPrevious
+              className={currentPage <= 1 ? "cursor-default" : "cursor-pointer"}
+              onClick={handlePrevPage}
+            />
           </PaginationItem>
 
           {renderPages()}
 
-          <PaginationItem>
-            <PaginationNext onClick={handleNextPage} />
+          <PaginationItem className="cursor-pointer">
+            <PaginationNext
+              className={
+                currentPage >= pageNumbers.length
+                  ? "cursor-default"
+                  : "cursor-pointer"
+              }
+              onClick={handleNextPage}
+            />
           </PaginationItem>
         </PaginationContent>
-      </Pagi>
+      </Pagination>
+    </div>
+  ) : (
+    <div className="pt-5 w-full flex justify-center items-center">
+      <h3 className="text-xs text-muted-foreground font-semibold">
+        There is no more articles to see.
+      </h3>
     </div>
   );
-};
-export default Pagination;
+}
+
+export default PaginationSection;
