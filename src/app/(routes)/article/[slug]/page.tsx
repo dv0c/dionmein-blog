@@ -25,10 +25,8 @@ const page: FC<pageProps> = async ({ params }) => {
     primary_author: PrimaryAuthor;
   };
 
-  if (body.primary_author === undefined || body.id === undefined)
+  if (body?.primary_author == undefined || body?.id == undefined)
     return notFound();
-
-  console.log(body.tags);
 
   return (
     <div className="mt-10 px-10 lg:px-0">

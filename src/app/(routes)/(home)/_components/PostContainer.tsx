@@ -6,6 +6,8 @@ import { PostsWithMeta, Post as _Post } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
+import { PostWrapper } from "@/components/PostWrapper";
+import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 
 export const PostContainer = () => {
   const [data, setData] = useState<_Post[]>();
@@ -44,19 +46,15 @@ export const PostContainer = () => {
 
   return (
     <div className="mt-5">
-      <PostWrapper>
-        {!isLoading ? (
-          <>
-            {data?.map((i: _Post, key: number) => (
-              <Post.Default post={i as _Post & any} key={key} description />
-            ))}
-          </>
-        ) : (
-          <div>
-            <Loader2 className="animate-spin" size="20" />
-          </div>
-        )}
-      </PostWrapper>
+      {!isLoading ? (
+        <PostWrapper>
+          {data?.map((i: _Post, key: number) => (
+            <Post.Default post={i as _Post & any} key={key} description />
+          ))}
+        </PostWrapper>
+      ) : (
+        <LoadingSkeleton />
+      )}
       {meta?.pagination?.page !== meta?.pagination?.pages && (
         <div className="flex items-center justify-center mt-10">
           <Button
@@ -72,14 +70,6 @@ export const PostContainer = () => {
           </Button>
         </div>
       )}
-    </div>
-  );
-};
-
-const PostWrapper = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="grid col-span-2 grid-cols-1 gap-10 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
-      {children}
     </div>
   );
 };
