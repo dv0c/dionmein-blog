@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { env } from "process";
 import Thumbnail from "./_components/Thumbnail";
 import Content from "./_components/Content";
+import Sidebar from "./_components/Sidebar";
 
 interface pageProps {
   params: {
@@ -56,10 +57,12 @@ const page: FC<pageProps> = async ({ params }) => {
       </div>
       <div className="max-w-5xl mx-auto mt-10 overflow-hidden">
         <div className="flex justify-between">
-          <div>
+          <div className="w-[80%]">
             <Content body={body.html} />
           </div>
-          <div>2</div>
+          <div className="w-[30%]">
+            <Sidebar data={data.posts[0]} />
+          </div>
         </div>
       </div>
     </div>

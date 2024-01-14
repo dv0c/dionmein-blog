@@ -49,6 +49,7 @@ export interface Post {
   created_at: string;
   updated_at: string;
   published_at: string;
+  primary_author?: PrimaryAuthor;
   custom_excerpt: null | string;
   codeinjection_head: null | string;
   codeinjection_foot: null | string;
@@ -80,13 +81,12 @@ export type ParamsTypes = {
   [key: string]: any;
 };
 
-
 export type PrimaryAuthor = {
   id: number;
   name: string;
-  slug:string;
+  slug: string;
   profile_image: string;
-  cover_image:string;
+  cover_image: string;
   bio: string | null;
   website: string | null;
   location: string | null;
@@ -95,4 +95,4 @@ export type PrimaryAuthor = {
   meta_title: string | null;
   meta_description: string | null;
   url: string;
-}
+};
