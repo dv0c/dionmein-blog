@@ -8,11 +8,10 @@ interface ContentProps {
 
 const Content: FC<ContentProps> = ({ body }) => {
   return (
-    <div className="post-container ">
-      <div
-        className={"post-content"}
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
+    <div className="post-container">
+      <div className="post-content">
+        <div dangerouslySetInnerHTML={{ __html: body }} />
+      </div>
     </div>
   );
 };
