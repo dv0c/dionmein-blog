@@ -10,7 +10,7 @@ const Content: FC<ContentProps> = ({ body }) => {
   return (
     <div className="post-container max-w-2xl">
       <section
-        className="gh-content gh-canvas is-body"
+        className="gh-content kg-width-full is-body" //gh-canvas replaced by kg-width-full
         dangerouslySetInnerHTML={{ __html: body }}
       />
     </div>

@@ -14,7 +14,7 @@ const Tags = ({
   return (
     <div className={cn("flex items-center mt-5 flex-wrap", gap)}>
       {tags.map((item, i) => (
-        <Link href={"/tag/" + item.name}>
+        <Link key={i} href={"/tag/" + item.name}>
           <button
             className={cn(
               "bg-gray-100 transition-all hover:bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold",

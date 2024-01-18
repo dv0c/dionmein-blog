@@ -30,7 +30,7 @@ const page: FC<pageProps> = async ({ params }) => {
     return notFound();
 
   return (
-    <div className="mt-10 px-10 lg:px-0">
+    <div className="mt-10 px-5 sm:px-10 lg:px-0">
       <div className="max-w-5xl mx-auto overflow-hidden">
         <Heading
           title={body.title}
@@ -56,11 +56,11 @@ const page: FC<pageProps> = async ({ params }) => {
         />
       </div>
       <div className="max-w-5xl mx-auto mt-10 overflow-hidden">
-        <div className="flex justify-between">
-          <div className="w-[80%]">
+        <div className="flex justify-between flex-col sm:flex-row">
+          <div className=" w-full sm:w-[80%]">
             <Content body={body.html} />
           </div>
-          <div className="w-[30%]">
+          <div className="sm:w-[30%] mt-10 sm:mt-0 w-full">
             <Sidebar data={data.posts[0]} />
           </div>
         </div>
