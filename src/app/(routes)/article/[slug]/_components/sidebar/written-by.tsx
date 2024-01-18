@@ -14,6 +14,7 @@ const WrittenBy: FC<WrittenByProps> = ({ author }) => {
       <div className="mt-5 flex gap-3">
         <Avatar className="w-[70px] h-[70px]">
           <AvatarImage src={author.profile_image} className="object-cover" />
+          <AvatarFallback>?</AvatarFallback>
         </Avatar>
         <div className="flex flex-col gap-1">
           <h1 className="font-semibold text-sm truncate">{author.name}</h1>

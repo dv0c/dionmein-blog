@@ -2297,6 +2297,10 @@ unless a heading is the very first element in the post content */
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: auto;
+  }
+  #twitter-widget-1 {
+    @apply bg-gray-200 rounded-2xl;
   }
 
   /* Gallery */
@@ -2309,6 +2313,10 @@ unless a heading is the very first element in the post content */
   .kg-image-card a:hover,
   .kg-gallery-image a:hover {
     opacity: 1 !important;
+  }
+
+  .kg-image-card {
+    @apply rounded-2xl overflow-hidden bg-gray-200;
   }
 
   /* Toggle */

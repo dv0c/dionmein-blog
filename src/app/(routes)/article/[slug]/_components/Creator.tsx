@@ -18,13 +18,19 @@ const Creator: FC<CreatorProps> = ({ author, date }) => {
       href={"/author/" + author.slug}
       className="flex items-center gap-x-2 group max-w-fit"
     >
-      <Image
-        src={author.profile_image}
-        alt={author.name}
-        width={45}
-        height={45}
-        className="object-cover group-hover:-translate-y-[1px] relative transition rounded-full max-w-[30px] max-h-[30px] sm:min-w-[45px] sm:min-h-[45px] w-[45px] h-[45px]"
-      />
+      {author.profile_image ? (
+        <Image
+          src={author.profile_image}
+          alt={author.name || "not-loaded"}
+          width={45}
+          height={45}
+          className="object-cover group-hover:-translate-y-[1px] relative transition rounded-full max-w-[30px] max-h-[30px] sm:min-w-[45px] sm:min-h-[45px] w-[45px] h-[45px]"
+        />
+      ) : (
+        <div className="group-hover:-translate-y-[1px] bg-gray-400 relative flex text-white items-center justify-center transition rounded-full max-w-[30px] max-h-[30px] sm:min-w-[45px] sm:min-h-[45px] w-[45px] h-[45px] ">
+          ?
+        </div>
+      )}
       <h6 className="text-sm text-muted-foreground flex-wrap">
         <span className="flex gap-x-1 items-center">
           <span className="text-xs">by</span>
