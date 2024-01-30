@@ -74,7 +74,7 @@ const page: FC<pageProps> = async ({ params }) => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto overflow-hidden">
-        <RelatedPosts category={body.tags[0].name} />
+        <RelatedPosts category={body.tags[0].slug} />
       </div>
     </div>
   );
