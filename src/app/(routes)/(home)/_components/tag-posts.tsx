@@ -5,7 +5,7 @@ import { PostWrapper } from "@/components/PostWrapper";
 import { api } from "@/lib/api";
 import { PostsWithMeta } from "@/types";
 import { FC, useEffect, useState } from "react";
-import PaginationSection from "../../featured-posts/_components/PaginationSection";
+import PaginationSection from "./PaginationSection";
 
 interface Props {
   tag: string;

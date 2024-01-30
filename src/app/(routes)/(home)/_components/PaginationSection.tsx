@@ -84,7 +84,7 @@ function PaginationSection({
     return renderedPages;
   };
 
-  return currentPage > 1 ? (
+  return pageNumbers.length > 1 ? (
     <div>
       <Pagination>
         <PaginationContent>

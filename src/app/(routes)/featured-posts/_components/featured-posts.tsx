@@ -3,7 +3,7 @@ import Post from "@/components/Post";
 import { api } from "@/lib/api";
 import { PostsWithMeta } from "@/types";
 import { FC, useEffect, useState } from "react";
-import PaginationSection from "./PaginationSection";
+import PaginationSection from "../../(home)/_components/PaginationSection";
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { PostWrapper } from "@/components/PostWrapper";
 
