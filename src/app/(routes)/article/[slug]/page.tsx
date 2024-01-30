@@ -9,6 +9,8 @@ import { env } from "process";
 import Thumbnail from "./_components/Thumbnail";
 import Content from "./_components/Content";
 import Sidebar from "./_components/Sidebar";
+import RelatedPosts from "./_components/RelatedPosts";
+import { PostContainer } from "../../(home)/_components/PostContainer";
 
 interface pageProps {
   params: {
@@ -64,6 +66,9 @@ const page: FC<pageProps> = async ({ params }) => {
             <Sidebar data={data.posts[0]} />
           </div>
         </div>
+      </div>
+      <div className="max-w-7xl mx-auto overflow-hidden">
+        <RelatedPosts category={body.tags[0].name} />
       </div>
     </div>
   );
