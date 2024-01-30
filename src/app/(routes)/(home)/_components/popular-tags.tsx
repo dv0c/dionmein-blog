@@ -15,7 +15,7 @@ export const PopularTags = () => {
 const Tags = async () => {
   const { data } = await api("tags", {
     limit: 7,
-    fields: "name,feature_image",
+    fields: "name,feature_image,slug",
     filter: "feature_image:false",
   });
 

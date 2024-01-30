@@ -9,6 +9,14 @@ import AlsoLike from "./_components/also-like";
 const page = ({}) => {
   return (
     <div>
+      <div
+        className="cover-mask"
+        style={{
+          backgroundImage:
+            "url(https://reiro.fueko.net/content/images/size/w1600/2022/10/kim-daniels-P2qImp_Mr2Y-unsplash.jpg)",
+        }}
+      />
+
       <Heading />
       <div className="flex mt-10 justify-center">
         <SearchBar />

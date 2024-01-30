@@ -5,6 +5,13 @@ import FeaturedPosts from "./_components/featured-posts";
 const page = async ({}) => {
   return (
     <div>
+      <div
+        className="cover-mask"
+        style={{
+          backgroundImage:
+            "url(https://reiro.fueko.net/content/images/size/w1600/2022/10/kim-daniels-P2qImp_Mr2Y-unsplash.jpg)",
+        }}
+      />
       <h1 className={cn("hero-title global-title", FrauncesFont.className)}>
         <span>Editor's Choice</span>
       </h1>

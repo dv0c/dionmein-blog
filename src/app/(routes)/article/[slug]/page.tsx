@@ -1,16 +1,15 @@
-import { FC } from "react";
-import Heading from "./_components/heading";
 import { api } from "@/lib/api";
 import { Post, PrimaryAuthor, Tag } from "@/types";
-import Creator from "./_components/Creator";
-import Share from "./_components/Share";
 import { notFound } from "next/navigation";
 import { env } from "process";
-import Thumbnail from "./_components/Thumbnail";
+import { FC } from "react";
 import Content from "./_components/Content";
-import Sidebar from "./_components/Sidebar";
+import Creator from "./_components/Creator";
 import RelatedPosts from "./_components/RelatedPosts";
-import { PostContainer } from "../../(home)/_components/PostContainer";
+import Share from "./_components/Share";
+import Sidebar from "./_components/Sidebar";
+import Thumbnail from "./_components/Thumbnail";
+import Heading from "./_components/heading";
 
 interface pageProps {
   params: {
@@ -33,6 +32,13 @@ const page: FC<pageProps> = async ({ params }) => {
 
   return (
     <div className="mt-10 px-5 sm:px-10 lg:px-0">
+      <div
+        className="cover-mask"
+        style={{
+          backgroundImage:
+            "url(https://reiro.fueko.net/content/images/size/w1600/2022/10/kim-daniels-P2qImp_Mr2Y-unsplash.jpg)",
+        }}
+      />
       <div className="max-w-5xl mx-auto overflow-hidden">
         <Heading
           title={body.title}
