@@ -27,7 +27,11 @@ const page: FC<pageProps> = async ({ params }) => {
     primary_author: PrimaryAuthor;
   };
 
-  if (body?.primary_author == undefined || body?.id == undefined)
+  if (
+    body?.primary_author == undefined ||
+    body?.id == undefined ||
+    body?.tags[0]?.slug === undefined
+  )
     return notFound();
 
   return (
