@@ -27,11 +27,7 @@ const page: FC<pageProps> = async ({ params }) => {
     primary_author: PrimaryAuthor;
   };
 
-  if (
-    body?.primary_author == undefined ||
-    body?.id == undefined ||
-    body?.tags[0]?.slug === undefined
-  )
+  if (body?.primary_author == undefined || body?.id == undefined)
     return notFound();
 
   return (
@@ -78,7 +74,9 @@ const page: FC<pageProps> = async ({ params }) => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto overflow-hidden">
-        <RelatedPosts category={body.tags[0].slug} />
+        {body?.tags[0]?.slug && (
+          <RelatedPosts postSlug={body.slug} category={body.tags[0].slug} />
+        )}
       </div>
     </div>
   );

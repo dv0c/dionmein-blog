@@ -74,7 +74,7 @@ export type ParamsTypes = {
   include?: string;
   fields?: string;
   formats?: "html" | "plaintext";
-  filter?: any;
+  filter?: string[] | string;
   limit?: number;
   page?: number;
   order?: "published_at DESC" | "title ASC" | "name ASC" | "monthly_price ASC";
