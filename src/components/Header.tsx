@@ -6,18 +6,18 @@ import { Search } from "lucide-react";
 export const Header = () => {
   return (
     <header>
-      <div className="pt-[2.5vh] justify-between flex min-h[60px] items-center gap-7 pr-[5vw] pl-[5vh]">
+      <div className="pt-[2.5vh] justify-center flex min-h[60px] items-center gap-7 pr-[5vw] pl-[5vh]">
         <Link href={"/"}>
-          <Image src={"/logo_black.png"} alt="logo" width={85} height={34} />
+          <Image src={"/logo_black.png"} alt="logo" width={150} height={34} />
         </Link>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Button variant={"ghost"}>
             <Search size={20} />
           </Button>
           <Link href={"/"} className="font-semibold">
             Sign in
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );
