@@ -54,7 +54,10 @@ const Post = {
               className="bg-gray-400 object-cover min-w-[45px] max-w-[45px] max-h-[45px] min-h-[45px] rounded-full border"
               alt={post.authors[0].slug}
             />
-            <div className="flex flex-col">
+            <Link
+              href={"/author/" + post.authors[0].slug}
+              className="flex flex-col"
+            >
               <span className="text-xs font-semibold">
                 by {post.authors[0].name}
               </span>
@@ -62,7 +65,7 @@ const Post = {
                 {formatTimeToNow(new Date(post.created_at))} ∙{" "}
                 {post.reading_time} mins read
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </article>
@@ -114,7 +117,12 @@ const Post = {
                   alt={post.authors[0].slug}
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs">by {post.authors[0].name}</span>
+                  <Link
+                    href={"/author/" + post.authors[0].slug}
+                    className="text-xs"
+                  >
+                    by {post.authors[0].name}
+                  </Link>
                 </div>
               </div>
             </div>
@@ -159,7 +167,12 @@ const Post = {
             <div className="mt-5">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <div className="flex flex-col">
-                  <span className="text-xs">by {post.authors[0].name}</span>
+                  <Link
+                    href={"/author/" + post.authors[0].slug}
+                    className="text-xs"
+                  >
+                    by {post.authors[0].name}
+                  </Link>
                 </div>
               </div>
             </div>

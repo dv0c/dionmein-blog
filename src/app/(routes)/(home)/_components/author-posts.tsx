@@ -8,10 +8,10 @@ import { FC, useEffect, useState } from "react";
 import PaginationSection from "./PaginationSection";
 
 interface Props {
-  tag: string;
+  author: string;
 }
 
-const TagPosts: FC<Props> = ({ tag }) => {
+const AuthorPosts: FC<Props> = ({ author }) => {
   const [data, setData] = useState<PostsWithMeta>();
   const [currentPage, setCurrentPage] = useState(0);
   const [isClient, setClient] = useState(false);
@@ -24,7 +24,7 @@ const TagPosts: FC<Props> = ({ tag }) => {
       limit,
       include: "tags,authors",
       order: "published_at DESC",
-      filter: "tag:" + tag,
+      filter: "authors:" + author,
       page: currentPage,
     }).then(({ data }) => {
       setData(data);
@@ -35,7 +35,8 @@ const TagPosts: FC<Props> = ({ tag }) => {
   return (
     <>
       <h1 className="text-xs font-semibold">
-        {data!.posts.length > 0 ? data?.posts.length + " POSTS" : null}
+        {" "}
+        {data?.posts.length! > 0 ? data?.posts.length + " POSTS" : null}
       </h1>
       <div className="mt-5">
         {isClient ? (
@@ -68,4 +69,4 @@ const TagPosts: FC<Props> = ({ tag }) => {
   );
 };
 
-export default TagPosts;
+export default AuthorPosts;
