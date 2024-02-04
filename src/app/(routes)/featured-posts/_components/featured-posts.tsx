@@ -32,33 +32,40 @@ const FeaturedPosts: FC<FeaturedPosts> = () => {
   }, [currentPage]);
 
   return (
-    <div className="mt-5">
-      {isClient ? (
-        <>
-          {!isLoading ? (
-            <>
-              <PostWrapper>
-                {data?.posts.map((item: any, i: number) => (
-                  <Post.Default key={i} post={item} />
-                ))}
-              </PostWrapper>
-              <div className="mt-10">
-                <PaginationSection
-                  currentPage={currentPage}
-                  postsPerPage={limit}
-                  setCurrentPage={setCurrentPage}
-                  totalPosts={data?.meta.pagination.total}
-                />
-              </div>
-            </>
-          ) : (
-            <LoadingSkeleton />
-          )}
-        </>
-      ) : (
-        <LoadingSkeleton />
-      )}
-    </div>
+    <>
+      <h1 className="text-xs font-semibold">
+        {data?.posts.length! > 0
+          ? data?.posts.length + " FEATURED POSTS"
+          : null}
+      </h1>
+      <div className="mt-5">
+        {isClient ? (
+          <>
+            {!isLoading ? (
+              <>
+                <PostWrapper>
+                  {data?.posts.map((item: any, i: number) => (
+                    <Post.Default key={i} post={item} />
+                  ))}
+                </PostWrapper>
+                <div className="mt-10">
+                  <PaginationSection
+                    currentPage={currentPage}
+                    postsPerPage={limit}
+                    setCurrentPage={setCurrentPage}
+                    totalPosts={data?.meta.pagination.total}
+                  />
+                </div>
+              </>
+            ) : (
+              <LoadingSkeleton />
+            )}
+          </>
+        ) : (
+          <LoadingSkeleton />
+        )}
+      </div>
+    </>
   );
 };
 

@@ -35,7 +35,7 @@ const TagPosts: FC<Props> = ({ tag }) => {
   return (
     <>
       <h1 className="text-xs font-semibold">
-        {data!.posts.length > 0 ? data?.posts.length + " POSTS" : null}
+        {data?.posts.length! > 0 ? data?.posts.length + " POSTS" : null}
       </h1>
       <div className="mt-5">
         {isClient ? (

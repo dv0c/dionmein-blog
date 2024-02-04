@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -8,30 +8,59 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
+import { api } from "@/lib/api";
+import { Post, PostsWithMeta, Tag, TagsData } from "@/types";
 
-export function SearchPopup() {
-  const [open, setOpen] = React.useState(false);
+interface Props {
+  isOpen: any;
+  setOpen: any;
+}
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+export function SearchPopup({ isOpen, setOpen }: Props) {
+  const [post, setPost] = useState<PostsWithMeta>();
+  const [tags, setTag] = useState<TagsData>();
+  const [postInput, setPostInput] = useState();
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    api("posts", {
+      fields: "title,slug",
+      order: "published_at DESC",
+      // filter: "posts:" + postInput,
+    }).then(({ data }) => {
+      setPost(data);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    api("tags", {
+      fields: "name,slug",
+      order: "published_at DESC",
+      // filter: "posts:" + postInput,
+    }).then(({ data }) => {
+      setTag(data);
+      setLoading(false);
+    });
   }, []);
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
+    <CommandDialog open={isOpen} onOpenChange={setOpen}>
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>Calendar</CommandItem>
-          <CommandItem>Search Emoji</CommandItem>
-          <CommandItem>Calculator</CommandItem>
+        <CommandGroup heading="Posts">
+          {post?.posts.map((item: Post, i: number) => (
+            <CommandItem key={i}>{item.title}</CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandGroup heading="Tags">
+          {tags?.tags.map((item: Tag, i: number) => (
+            <CommandItem key={i}>
+              <span className="text-muted-foreground mr-2">#</span>
+              {item.name}
+            </CommandItem>
+          ))}
         </CommandGroup>
       </CommandList>
     </CommandDialog>

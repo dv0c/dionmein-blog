@@ -116,3 +116,7 @@ export interface Author {
 export interface AuthorsData {
   authors: Author[];
 }
+
+export interface TagsData {
+  tags: Tag[];
+}

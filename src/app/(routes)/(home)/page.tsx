@@ -24,7 +24,7 @@ const page = ({}) => {
       <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
         <PopularTags />
       </div>
-      <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
+      <div className="mt-10 mx-auto max-w-[var(--max-width-2)]">
         <WhatsNew />
       </div>
       <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">

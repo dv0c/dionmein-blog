@@ -20,7 +20,6 @@ const page = async ({}) => {
       </p>
       <div className="mt-20 mx-auto max-w-[var(--max-width-2)]">
         <section className="mx-5 mb-[7vh]">
-          <h1 className="text-xs font-semibold">10 FEATURED POSTS</h1>
           <FeaturedPosts />
         </section>
       </div>
