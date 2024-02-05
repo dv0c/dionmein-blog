@@ -10,6 +10,7 @@ import {
 } from "./ui/command";
 import { api } from "@/lib/api";
 import { Post, PostsWithMeta, Tag, TagsData } from "@/types";
+import Link from "next/link";
 
 interface Props {
   isOpen: any;
@@ -51,14 +52,18 @@ export function SearchPopup({ isOpen, setOpen }: Props) {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Posts">
           {post?.posts.map((item: Post, i: number) => (
-            <CommandItem key={i}>{item.title}</CommandItem>
+            <CommandItem key={i}>
+              <Link href={"/article/" + item.slug}>{item.title}</Link>
+            </CommandItem>
           ))}
         </CommandGroup>
         <CommandGroup heading="Tags">
           {tags?.tags.map((item: Tag, i: number) => (
             <CommandItem key={i}>
-              <span className="text-muted-foreground mr-2">#</span>
-              {item.name}
+              <Link href={"/tag/" + item.slug}>
+                <span className="text-muted-foreground mr-2">#</span>
+                {item.name}
+              </Link>
             </CommandItem>
           ))}
         </CommandGroup>

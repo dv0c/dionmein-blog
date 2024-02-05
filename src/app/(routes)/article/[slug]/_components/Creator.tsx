@@ -34,7 +34,7 @@ const Creator: FC<CreatorProps> = ({ author, date }) => {
       <h6 className="text-sm text-muted-foreground flex-wrap">
         <span className="flex gap-x-1 items-center">
           <span className="text-xs">by</span>
-          <div className="group-hover:text-semibold group-hover:underline cursor-pointer">
+          <div className="group-hover:text-semibold w-full group-hover:underline cursor-pointer">
             {author.name}
           </div>
         </span>
