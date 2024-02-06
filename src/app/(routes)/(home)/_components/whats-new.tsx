@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { api } from "@/lib/api";
 
+export const revalidate = 3600;
+
 export const WhatsNew = async () => {
   const { data } = await api("posts", {
     limit: 3,
